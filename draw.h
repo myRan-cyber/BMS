@@ -47,7 +47,7 @@ int draw_show_all_visitor();
 
 //暂停等待输入
 void pause();
-//
+//几种绘制函数
 void draw_1(std::vector<std::string> messages);
 //
 void draw_2(std::vector<std::string> messages);
