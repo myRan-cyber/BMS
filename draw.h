@@ -70,10 +70,59 @@ T get_(T t)
 {
     T input;
     bool out=false;
-    while (!out){
-        
+    while (!out){        std::cin>>input;
+        //输入类型不匹配
+        if(std::cin.fail()){
+            std::cout<<"!>> >> 类型错误 << <<!"<<std::endl
+            <<"    >> 请重新输入：";
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+        }
+        //针对不同类型进行检查
+        else{
+            if constexpr(std::is_same<T,int>::value)
+            {
+                if(input<=0||input>t){
+                    std::cout<<"!>> >> 输入错误 << <<!"<<std::endl
+                    <<"   >> 请重新输入：";
+                }
+                else{
+                    out=true;
+                }
+            }
+            else if constexpr(std::is_same<T,long>::value)
+            {
+                if(input>std::numeric_limits<long>::max())
+                {
+                    std::cout<<"!>> >> 输入错误 << <<!"<<std::endl
+                    <<"   >> 请重新输入：";
+                }
+                else{
+                    out=true;
+                }
+            }
+            else if constexpr(std::is_same<T,string>::value){
+                if(t=="1"&&input!="管理者"&&input!="读者"){
+                    std::cout<<"!>> >> 输入错误 << <<!"<<std::endl
+                    <<"!>> >> 应输入管理者或读者 << <<!"<<std::endl
+                    <<"   >> 请重新输入：";
+                }
+                else if(t=="0"&&input!="在库"&&input!="借出"){
+                    std::cout<<"!>> >> 输入错误 << <<!"<<std::endl
+                    <<"!>> >> 应输入在库或借出 << <<!"<<std::endl
+                    <<"   >> 请重新输入：";
+                }
+                else{
+                    out=true;
+                }
+            }
+        }
     }
+    return input;
 }
+
+//界面函数数组
+extern std::vector<int(*)()>Interface;
 
 
 #endif
