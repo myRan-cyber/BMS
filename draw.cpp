@@ -1,5 +1,6 @@
 #include"draw.h"
-
+#include"books.h"
+#include"staffs.h"
 //Interface 界面函数数组
 std::vector<int(*)()> Interface ={draw_begin,draw_manager,draw_reader,draw_log_in_manager,draw_log_in_reader,draw_borrow,draw_return,
                                     draw_manage_book,draw_add_book,draw_delete_book,draw_change_book,draw_find_book,
@@ -73,7 +74,6 @@ int help()
 	switch (i) 
     {
 	case 1:
-        
         std::cout<<"请输入人员姓名：";
         std::cin>>staffName;
         std::cout<<"请输入人员密码：";
@@ -83,7 +83,7 @@ int help()
 		saveStaffInfoToDisk(staff);
 		    break;
 	case 2:
-		saveBookToDisk(books);
+		saveBooksToDisk(books);
 			break;
 	case 3:
 			void find_back();
@@ -205,11 +205,12 @@ int draw_change_book()
 	pause();
 	return 3;
 }
-int draw_show_all_book()
+int draw_show_all_books()
 {
 	std::vector<std::string> messages;
+    std::vector<Book> books=B.getBooks();
 
-	for (const auto& book: B.books)
+	for (const auto& book: books)
 	{
 		std::string temp = book.getBookName();
 		if (book.getBookStatus())
@@ -281,7 +282,7 @@ int draw_find_visitor()
 	pause();
 	return 4;
 }
-int draw_show_all_visitor()
+int draw_show_all_visitors()
 {
 	std::vector<std::string> messages;
 
@@ -369,7 +370,7 @@ int draw_return()
 	std::cin >> book;
 	return 1;
 }
-int draw_show_all_books()
+int draw_show_borrowedBooks()
 {
     std::string user=S.getUser();
 	int n = S.findStaff(user);
@@ -433,17 +434,17 @@ void draw_body_2(std::vector<std::string> messages)
 		std::cout << "                                                                |" << std::endl << std::endl;
 	}
 }
-void __draw_end_1()
+void draw_tail_1()
 {
 	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————" << std::endl << std::endl;
 	std::cout << "<<-————请选择————->> : ";
 }
-void __draw_end_2()
+void draw_tail_2()
 {
 	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————" << std::endl << std::endl;
 	std::cout << "<<-————请输入————->> : ";
 }
-void __draw__end_3()
+void draw_tail_3()
 {
 	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————" << std::endl << std::endl;
 }

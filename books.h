@@ -93,8 +93,8 @@ struct Books{
 
     //几个友元函数
     friend int draw_borrow();
-    friend int draw_back();
-    friend int draw_show_all_book();
+    friend int draw_return();
+    friend int draw_show_all_books();
 
 private:
     //书籍容器，包含所有的Book类书籍
@@ -102,7 +102,7 @@ private:
 };
 
 //将书籍集合保存到磁盘的函数
-void saveBookToDisk(std::vector<Book>& books);
+void saveBooksToDisk(std::vector<Book>& books);
 //外部定义的Books类对象
 extern Books B;
 

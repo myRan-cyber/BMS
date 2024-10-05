@@ -1,5 +1,6 @@
 #include"staffs.h"
-
+#include<fstream>
+#include"books.h"
 std::string user;
 Staffs S;
 
@@ -62,7 +63,7 @@ std::vector<std::string> Staff::getBorrowedBooks()const
 //个人借书、还书检查身份
 void Staff::borrowBook(std::string& book)
 {
-    if(borrowed.back()=="无"){
+    if(!borrowed.empty()&&borrowed.back()=="无"){
         borrowed.pop_back();
     }
     borrowed.push_back(book);
@@ -94,13 +95,13 @@ int Staff::checkBookStatus(const std::string& book) const
 }
 
 //返回人员信息
-void Staff::getStaffInfo(std::vector<std::string>& result)
+/*void Staff::getStaffInfo(std::vector<std::string>& result)
 {
     result={this->name,std::to_string(this->password),this->id};
     for(const auto& i:borrowed){
         result.push_back(i);
     }
-}
+}*/
 
 //将人员信息写入磁盘
 void saveStaffInfoToDisk(Staff& staff)

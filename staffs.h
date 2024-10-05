@@ -9,7 +9,8 @@
 #include<cstdlib>
 #include<sstream>
 #include"draw.h"
-#include"books.h"
+
+
 
 #define MAX_BORROWED_BOOKS 3  //最大借书为3
 

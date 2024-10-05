@@ -8,8 +8,7 @@
 #include<limits>
 #include<type_traits>
 #include<iomanip>
-#include "books.h"
-#include "staffs.h"
+
 
 //开始界面
 int draw_begin();
@@ -101,7 +100,7 @@ T get_(T t)
                     out=true;
                 }
             }
-            else if constexpr(std::is_same<T,string>::value){
+            else if constexpr(std::is_same<T,std::string>::value){
                 if(t=="1"&&input!="管理者"&&input!="读者"){
                     std::cout<<"!>> >> 输入错误 << <<!"<<std::endl
                     <<"!>> >> 应输入管理者或读者 << <<!"<<std::endl
