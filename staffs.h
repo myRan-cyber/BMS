@@ -5,6 +5,7 @@
 #include<string>
 //#include<conio.h>
 #include<vector>
+#include<algorithm>
 #include<cstdlib>
 #include<sstream>
 #include"draw.h"
@@ -24,7 +25,7 @@ struct Staff{
     void returnBook(std::string& bookName);
 
     //检查人物身份与书籍的关系
-    int checkBookStatus(std::string& book);
+    int checkBookStatus(const std::string& book) const;
 
     //获取人员信息并填充到结果向量
     void getStaffInfo(std::vector<std::string>& result);
@@ -37,7 +38,7 @@ struct Staff{
     void setStaffPassword(long newPassword);
 
     //获取人员的所有信息
-    void getAllStaffInfo(const std::string& name ,const long& password,const std::string& id,const std::vector<std::string>& borrowed);
+    void getAllStaffInfo(std::string& name ,long& password,std::string& id,std::vector<std::string>& borrowed);
     //获取人员姓名
     std::string getStaffName() const;
     //获取人员身份标识
@@ -51,6 +52,7 @@ struct Staff{
 
     friend void saveStaffInfoToDisk(const Staff& staff);
 
+private:
     //人员姓名
     std::string name;
     //人员密码
@@ -70,7 +72,7 @@ struct Staffs{
     ~Staffs();
 
     //检查登录人员信息
-    int checkLogin(const int i) const;
+    int checkLogin(const int i) ;
 
     //借阅多本书籍
     void borrowMultipleBooks(std::string& book,const int n);
@@ -82,11 +84,15 @@ struct Staffs{
     //删除人员
     void deleteStaff();
     //修改人员信息
-    void modifyStaff();
+    void changeStaff();
     //展示人员信息
     void showStaffs();
     //查找人员
-    int findStaff(std::string&name);
+    int findStaff(const std::string& name) const;
+    //返回人员信息
+    std::vector<Staff> getPerson() const;
+    //返回用户
+    std::string getUser() const;
 
     friend int draw_borrow();
     friend int draw_back();

@@ -237,7 +237,7 @@ void Books::deleteBook()
 }
 
 //修改书籍
-void Books::modifyBook()
+void Books::changeBook()
 {
     std::string name,author,status="0",owner;
     long id=0;
@@ -326,3 +326,7 @@ void Books::returnMultipleBooks(std::string name,int n)
     books[n].returnBook(name);
 }
 
+std::vector<Book> Books::getBooks() const
+{
+    return this->books;
+}

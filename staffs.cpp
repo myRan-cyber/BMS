@@ -278,7 +278,7 @@ void Staffs::returnMultipleBooks(std::string& book,const int n)
     person[n].returnBook(book);
 }
 
-void Staffs::modifyStaff()
+void Staffs::changeStaff()
 {
     std::string name,id="0";
     long password=0;
@@ -350,4 +350,14 @@ int Staffs::findStaff(const std::string& name) const
         n++;
     }
     return -1;
+}
+
+std::vector<Staff> Staffs::getPerson() const
+{
+    return this->person;
+}
+
+std::string Staffs::getUser()const
+{
+    return this->user;
 }

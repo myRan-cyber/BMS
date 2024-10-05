@@ -19,8 +19,8 @@ int draw_manager();
 int draw_reader();
 
 //管理员、读者登陆界面
-int draw_long_in_manager();
-int draw_long_in_reader();
+int draw_log_in_manager();
+int draw_log_in_reader();
 
 //借书还书界面
 int draw_borrow();
@@ -43,7 +43,7 @@ int draw_change_visitor();
 //查看所借书籍、所有书籍、所有人员
 int draw_show_borrowedBooks();
 int draw_show_all_books();
-int draw_show_all_visitor();
+int draw_show_all_visitors();
 
 //暂停等待输入
 void pause();
@@ -62,7 +62,7 @@ void draw_tail_3();
 //
 void draw_body_1(std::vector<std::string> messages);
 //
-void draw_body_1(std::vector<std::string> messages);
+void draw_body_2(std::vector<std::string> messages);
 
 //检测输入函数
 template<typename T>
