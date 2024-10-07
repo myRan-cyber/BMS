@@ -141,7 +141,7 @@ void saveStaffInfoToDisk(Staff& staff)
 Staffs::Staffs()
 {
     std::ifstream infile;
-    infile.open("staffs.txt",std::ios::in);
+    infile.open("/home/nuaaer/BMS/src/staffs.txt",std::ios::in);
     if(infile.fail())
     {
         std::cerr<<"An error occurred while opening the file:"<<strerror(errno)<<std::endl;
@@ -170,7 +170,7 @@ Staffs::Staffs()
 Staffs::~Staffs()
 {
     std::ofstream outfile;
-    outfile.open("staffs.txt",std::ios::trunc);
+    outfile.open("/home/nuaaer/BMS/src/staffs.txt",std::ios::trunc);
     if(outfile.fail())
     {
         std::cerr<<"An error occurred while opening the file:"<<strerror(errno)<<std::endl;

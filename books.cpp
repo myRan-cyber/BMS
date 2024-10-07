@@ -150,7 +150,7 @@ void saveBooksToDisk(std::vector<Book>& books)
 Books::Books()
 {
     std::ifstream infile;
-    infile.open("books.txt",std::ios::in);
+    infile.open("/home/nuaaer/BMS/src/books.txt",std::ios::in);
     if(infile.fail())
     {
         std::cerr<<"An error occurred while opening the file:"<<std::strerror(errno)<<std::endl;
@@ -171,7 +171,7 @@ Books::Books()
 Books::~Books()
 {
     std::ofstream outfile;
-    outfile.open("books.txt",std::ios::trunc);
+    outfile.open("/home/nuaaer/BMS/src/books.txt",std::ios::trunc);
     if(outfile.fail()){
         std::cerr<<"An error occurred while opening the file:"<<std::strerror(errno)<<std::endl;
     }

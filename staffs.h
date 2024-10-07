@@ -65,7 +65,7 @@ private:
 };
 
 //将人员信息写入磁盘
-//void saveStaffInfoToDisk(Staff& staff);
+void saveStaffInfoToDisk(Staff& staff);
 
 //人员集合
 struct Staffs{
