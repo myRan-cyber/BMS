@@ -56,6 +56,7 @@ struct Book{
     //设置书籍所有者
     void setBookOwner(std::string newOwner);
 
+private:
     //书籍名称
     std::string name = "nuaa";
     //书籍作者
@@ -88,13 +89,14 @@ struct Books{
     //查找书籍操作
     int findBook(std::string bookName);
     //返回书籍容器
-    std::vector<Book> getBooks() const;
+    //std::vector<Book> getBooks() const;
 
 
     //几个友元函数
     friend int draw_borrow();
     friend int draw_return();
     friend int draw_show_all_books();
+    friend void saveBooksToDisk(std::vector<Book>& books);
 
 private:
     //书籍容器，包含所有的Book类书籍

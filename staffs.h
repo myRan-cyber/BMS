@@ -26,7 +26,7 @@ struct Staff{
     void returnBook(std::string& bookName);
 
     //检查人物身份与书籍的关系
-    int checkBookStatus(const std::string& book) const;
+    int checkBookStatus(const std::string& book);
 
     //获取人员信息并填充到结果向量
     void getStaffInfo(std::vector<std::string>& result);
@@ -65,7 +65,7 @@ private:
 };
 
 //将人员信息写入磁盘
-void saveStaffInfoToDisk(Staff& staff);
+//void saveStaffInfoToDisk(Staff& staff);
 
 //人员集合
 struct Staffs{
@@ -89,16 +89,16 @@ struct Staffs{
     //展示人员信息
     void showStaffs();
     //查找人员
-    int findStaff(const std::string& name) const;
+    int findStaff(const std::string& name) ;
     //返回人员信息
     std::vector<Staff> getPerson() const;
     //返回用户
     std::string getUser() const;
 
     friend int draw_borrow();
-    friend int draw_back();
-    friend int draw_show_book();
-    friend int draw_show_all_visit();
+    friend int draw_return();
+    friend int draw_show_all_books();
+    friend int draw_show_all_visitors();
 
 private:
     std::vector<Staff> person;

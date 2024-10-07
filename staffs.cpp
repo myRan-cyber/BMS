@@ -1,6 +1,9 @@
 #include"staffs.h"
 #include<fstream>
 #include"books.h"
+#include <cstring>
+
+
 std::string user;
 Staffs S;
 
@@ -23,6 +26,7 @@ void Staff::setStaffPassword(long password)
     this->password=password;
 }
 
+//获取个人信息
 void Staff::getAllStaffInfo(std::string& name ,long& password,std::string& id,std::vector<std::string>& borrowed)
 {
     name=this->name;
@@ -48,7 +52,7 @@ long Staff::getStaffPassword()const
 
 bool Staff::getIsAchievable()const
 {
-    if(this->borrowed.size()>=MAX_BORROWED_BOOKS)
+    if(this->borrowed.size()>(MAX_BORROWED_BOOKS-1))
     {
         return false;
     }
@@ -80,10 +84,11 @@ void Staff::returnBook(std::string& book)
     }
 }
 
-int Staff::checkBookStatus(const std::string& book) const
+int Staff::checkBookStatus(const std::string& book) 
 {
     int n=0;
-    for(const auto& i:borrowed)
+    //for(const auto& i:borrowed)
+    for(auto i : borrowed)
     {
         if(i==book)
         {
@@ -95,13 +100,15 @@ int Staff::checkBookStatus(const std::string& book) const
 }
 
 //返回人员信息
-/*void Staff::getStaffInfo(std::vector<std::string>& result)
+void Staff::getStaffInfo(std::vector<std::string>& result)
 {
     result={this->name,std::to_string(this->password),this->id};
-    for(const auto& i:borrowed){
+    //for(const auto& i:borrowed)
+    for(auto i : borrowed)
+    {
         result.push_back(i);
     }
-}*/
+}
 
 //将人员信息写入磁盘
 void saveStaffInfoToDisk(Staff& staff)
@@ -137,11 +144,12 @@ Staffs::Staffs()
     infile.open("staffs.txt",std::ios::in);
     if(infile.fail())
     {
-        std::cout<<"can't open staffs.txt!"<<std::endl;
+        std::cerr<<"An error occurred while opening the file:"<<strerror(errno)<<std::endl;
     }
     std::string name,id,temp;
     long password;
     std::vector<std::string>borrowed;
+    std::cout<<"Staffs构造函数!"<<std::endl;
 
     while(std::getline(infile,temp)){
         std::stringstream line_stream(temp);
@@ -150,6 +158,8 @@ Staffs::Staffs()
         {
             borrowed.push_back(temp);
         }
+        std::cout<<"读取文件中的人员信息："<<std::endl;
+        std::cout<<name<<" "<<password<<" "<<id<<" "<<temp<<std::endl;
         Staff s(name,password,id,borrowed);
         person.push_back(s);
         borrowed.clear();
@@ -163,7 +173,7 @@ Staffs::~Staffs()
     outfile.open("staffs.txt",std::ios::trunc);
     if(outfile.fail())
     {
-        std::cout<<"can't open staffs.txt!"<<std::endl;
+        std::cerr<<"An error occurred while opening the file:"<<strerror(errno)<<std::endl;
     }
     std::string name,id;
     long password;
@@ -238,12 +248,17 @@ int Staffs::checkLogin(const int i)
     long password_input=0,password;
     std::cout<<"   >>请输入用户名：";
     std::cin>>name;
+    //std::cout<<"用户名："<<name<<std::endl;
     std::cout<<std::endl;
     int index=findStaff(name);
+    std::cout<<"index="<<index<<std::endl;
     if(index!=INVALID_INDEX){
         person[index].getAllStaffInfo(name,password,id_input,borrowed);
+        //std::cout<<"该用户名对应的文件信息："<<std::endl;
+        //std::cout<<person[index].name<<" "<<person[index].password<<" "<<person[index].id<<std::endl;
         std::cout<<"   >>输入密码：";
         password_input=get_(password_input);
+        std::cout<<"输入的密码为："<<password_input<<std::endl;
         std::cout<<std::endl;
         if(password==password_input){
             if(id==id_input){
@@ -309,7 +324,7 @@ void Staffs::changeStaff()
     }
 }
 
-void Staff::getStaffInfo(std::vector<std::string>& result)
+/*void Staff::getStaffInfo(std::vector<std::string>& result)
 {
     result.push_back(this->name);
     result.push_back(std::to_string(this->password));
@@ -317,7 +332,7 @@ void Staff::getStaffInfo(std::vector<std::string>& result)
     for(const auto& book:getBorrowedBooks()){
         result.push_back(book);
     }
-}
+}*/
 
 void Staffs::showStaffs()
 {
@@ -339,11 +354,16 @@ void Staffs::showStaffs()
     }
 }
 
-int Staffs::findStaff(const std::string& name) const
+int Staffs::findStaff(const std::string& name) 
 {
     int n=0;
-    for(const auto& i:person)
+    std::cout<<"findStaff: name="<<name<<std::endl;
+    std::cout<<"person容器中的名字:"<<std::endl;
+   // std::cout<<person[0].name<<std::endl;
+    //for( auto& i:person)
+    for( auto i : person)
     {
+        std::cout<<i.getStaffName()<<std::endl;
         if(i.getStaffName()==name)
         {
             return n;

@@ -11,12 +11,12 @@ std::vector<int(*)()> Interface ={draw_begin,draw_reader,draw_manager,draw_manag
 int introduction()
 {
 	std::cout << "*********************************************************" << std::endl << std::endl;
-	std::cout << "————-————-————-————-————-关于本图书管理系统-————-————-————-————-————" << std::endl;
+	std::cout << "————-————-————-————关于本图书管理系统-————-————-————-————" << std::endl;
 	std::cout << "|                                                    |" << std::endl;
 	std::cout << "|        ————-————->>1.功能说明<<-————-————           |" << std::endl;
 	std::cout << "|        ————-————->>2.书籍说明<<-————-————           |" << std::endl;
 	std::cout << "|        ————-————->>3.返回   <<-————-————           |" << std::endl;
-	std::cout << "|                                                  |" << std::endl;
+	std::cout << "|                                                    |" << std::endl;
 	std::cout << "*********************************************************" << std::endl;
 	std::cout << "————-————->>请选择：";
 
@@ -25,11 +25,11 @@ int introduction()
 	switch (i)
 	{
 	case 1:
-		std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
+		std::cout << "————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
 		std::cout << "|       通过本系统你可以：                                |" << std::endl;
 		std::cout << "|登录管理员信息，对书本信息、相关人员操作                     |" << std::endl;
 		std::cout << "|登录读者信息，可进行借书还书操作                            |" << std::endl;
-		std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
+		std::cout << "————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
 		break;
 	case 2:
 		std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
@@ -108,9 +108,9 @@ int draw_begin()
         case 1:
         return introduction();
         case 2:
-        return 15;
+        return 15;//管理员登录
         case 3:
-        return 14;
+        return 14;//读者登录
         case 4:
         return help();
         case 5:
@@ -127,9 +127,9 @@ int draw_manager()
 	int message = get_(3);
 	switch (message)
 	{
-	case 1:  return 3;
-	case 2:  return 4;
-	case 3:  return 0;
+	case 1:  return 3;//管理书籍
+	case 2:  return 4;//管理人员
+	case 3:  return 0;//开始
 	}
 	return 0;
 }
@@ -140,7 +140,7 @@ int draw_log_in_manager()
 	draw_tail_3();
 	pause();
 	if (n)
-		return 2;
+		return 2;//管理员界面
 	return 0;
 }
 int draw_log_in_reader()
@@ -210,9 +210,9 @@ int draw_change_book()
 int draw_show_all_books()
 {
 	std::vector<std::string> messages;
-    std::vector<Book> books=B.getBooks();
+    //std::vector<Book> books=B.getBooks();
 
-	for (const auto& book: books)
+	for (const auto& book: B.books)
 	{
 		std::string temp = book.getBookName();
 		if (book.getBookStatus())
@@ -354,12 +354,12 @@ int draw_return()
 	int staff_Index = S.findStaff(S.getUser());
 	int book_Index = B.findBook(book);
     std::vector<Staff> person=S.getPerson();
-    std::vector<Book> books=B.getBooks();
-	if (person[staff_Index].checkBookStatus(book) != INVALID_INDEX && (books[book_Index].getBookStatus()!=IN_STOCK))
+    //std::vector<Book> books=B.getBooks();
+	if (person[staff_Index].checkBookStatus(book) != INVALID_INDEX && (B.books[book_Index].getBookStatus()!=IN_STOCK))
 	{
 		S.getPerson()[staff_Index].returnBook(book);
         std::string user=S.getUser();
-        B.getBooks()[book_Index].returnBook(user);
+        B.books[book_Index].returnBook(user);
 		std::cout << "     >>归还成功" << std::endl << std::endl;
 		std::cout << "     >>输入任意值返回" << std::endl;
 		draw_tail_3();
@@ -409,7 +409,7 @@ void draw_2(std::vector<std::string> messages)
 }
 void draw_head()
 {
-	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl ;
+	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-" << std::endl ;
 	std::cout << "|                   欢迎来到图书管理系统                     |" << std::endl << std::endl;
 }
 void draw_body_1(std::vector<std::string> messages)

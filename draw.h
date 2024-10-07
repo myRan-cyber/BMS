@@ -69,7 +69,8 @@ T get_(T t)
 {
     T input;
     bool out=false;
-    while (!out){        std::cin>>input;
+    while (!out){        
+        std::cin>>input;
         //输入类型不匹配
         if(std::cin.fail()){
             std::cout<<"!>> >> 类型错误 << <<!"<<std::endl

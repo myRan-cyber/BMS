@@ -2,13 +2,14 @@
 #include"draw.h"
 #include<iostream>
 #include<string>
+#include<cstring>
 #include<vector>
 #include<fstream>
 #include<sstream>
 #include<iomanip>
 #include<ctime>
 
-Books B;
+Books B;//储存所有书本信息
 
 Book::Book(std::string bookName,std::string bookAuthor,long bookId,std::string bookStatus,std::string bookOwner):name(bookName),author(bookAuthor),id(bookId),owner(bookOwner)
 {
@@ -121,11 +122,12 @@ void Book::setBookStatus(std::string status)
 
 void saveBooksToDisk(std::vector<Book>& books)
 {
+    //获取当前时间作为文件名
     std::time_t t=std::time(nullptr);
     std::tm tm=*std::localtime(&t);
     std::stringstream filename;
     filename << std::put_time(&tm,"%Y%m%d%H%M%S")<<".txt";
-
+    //打开文件并写入信息
     std::ofstream file(filename.str());
     if(file.is_open()){
         for(auto& book:books)
@@ -133,7 +135,7 @@ void saveBooksToDisk(std::vector<Book>& books)
             file<<"书名："<<book.getBookName()<<std::endl;
             file<<"作者："<<book.getBookAuthor()<<std::endl;
             file<<"书号："<<book.getBookId()<<std::endl;
-            file<<"状态："<<book.getBookStatus()<<std::endl;
+            file<<"状态："<<(book.getBookStatus()==IN_STOCK?"在库":"借出")<<std::endl;
             file<<"所有者："<<book.getBookOwner()<<std::endl;
             file<<"--------------------"<<std::endl;
         }
@@ -151,7 +153,7 @@ Books::Books()
     infile.open("books.txt",std::ios::in);
     if(infile.fail())
     {
-        std::cout<<"can't open books.txt!"<<std::endl;
+        std::cerr<<"An error occurred while opening the file:"<<std::strerror(errno)<<std::endl;
     }
     
     std::string name,author,owner,status;
@@ -171,7 +173,7 @@ Books::~Books()
     std::ofstream outfile;
     outfile.open("books.txt",std::ios::trunc);
     if(outfile.fail()){
-        std::cout<<"can't open books.txt!"<<std::endl;
+        std::cerr<<"An error occurred while opening the file:"<<std::strerror(errno)<<std::endl;
     }
     std::string name,author,owner,status;
     long id;
@@ -214,7 +216,7 @@ void Books::addBook()
 
         Book b(name,author,id,bookStatus,owner);
         books.push_back(b);
-        std::cout<<"--------->>添加成功<<---------"<<std::endl;
+        std::cout<<"--------->>添加成功!<<---------"<<std::endl;
     }
 }
 
@@ -305,7 +307,9 @@ void Books::showBooks()
     int index=this->findBook(name);
     if(index!=INVALID_INDEX)
     {
-        std::vector<std::string> messages;
+        //std::vector<std::string> result;
+       // books[index].getBookInfo(result);
+        std::vector<std::string> messages ;
         books[index].getBookInfo(messages);
         messages.push_back("输入任意值返回");
         draw_body_2(messages);
@@ -325,9 +329,4 @@ void Books::borrowMultipleBooks(std::string name,int n)
 void Books::returnMultipleBooks(std::string name,int n)
 {
     books[n].returnBook(name);
-}
-
-std::vector<Book> Books::getBooks() const
-{
-    return this->books;
 }
