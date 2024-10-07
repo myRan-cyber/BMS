@@ -2,10 +2,12 @@
 #include"books.h"
 #include"staffs.h"
 //Interface 界面函数数组
-std::vector<int(*)()> Interface ={draw_begin,draw_manager,draw_reader,draw_log_in_manager,draw_log_in_reader,draw_borrow,draw_return,
-                                    draw_manage_book,draw_add_book,draw_delete_book,draw_change_book,draw_find_book,
-                                    draw_manage_visitor,draw_add_visitor,draw_delete_visitor,draw_change_visitor,draw_find_visitor,
-                                    draw_show_borrowedBooks,draw_show_all_books,draw_show_all_visitors};
+std::vector<int(*)()> Interface ={draw_begin,draw_reader,draw_manager,draw_manage_book,draw_manage_visitor,draw_return,draw_borrow,
+                                    draw_add_book,draw_delete_book,draw_find_book,draw_change_book,draw_add_visitor,draw_delete_visitor,
+                                    draw_change_visitor,draw_log_in_reader,draw_log_in_manager,draw_show_borrowedBooks,draw_find_visitor,
+                                    draw_show_all_visitors,draw_show_all_books};
+
+//0开始 1读者 2管理员 3管理书籍 4管理人员 5还书 6借书 7添加书籍 8删除书籍 9查找书籍 10修改书籍 11添加人员 12删除人员 13修改人员 14读者登录 15管理员登录 16展示图书 17展示人员 18展示所有人员 19展示所有图书
 int introduction()
 {
 	std::cout << "*********************************************************" << std::endl << std::endl;
