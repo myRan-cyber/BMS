@@ -87,8 +87,7 @@ void Staff::returnBook(std::string& book)
 int Staff::checkBookStatus(const std::string& book) 
 {
     int n=0;
-    //for(const auto& i:borrowed)
-    for(auto i : borrowed)
+    for(const auto& i:borrowed)
     {
         if(i==book)
         {
@@ -103,8 +102,7 @@ int Staff::checkBookStatus(const std::string& book)
 void Staff::getStaffInfo(std::vector<std::string>& result)
 {
     result={this->name,std::to_string(this->password),this->id};
-    //for(const auto& i:borrowed)
-    for(auto i : borrowed)
+    for(const auto& i:borrowed)
     {
         result.push_back(i);
     }
@@ -149,7 +147,6 @@ Staffs::Staffs()
     std::string name,id,temp;
     long password;
     std::vector<std::string>borrowed;
-    std::cout<<"Staffs构造函数!"<<std::endl;
 
     while(std::getline(infile,temp)){
         std::stringstream line_stream(temp);
@@ -158,8 +155,6 @@ Staffs::Staffs()
         {
             borrowed.push_back(temp);
         }
-        std::cout<<"读取文件中的人员信息："<<std::endl;
-        std::cout<<name<<" "<<password<<" "<<id<<" "<<temp<<std::endl;
         Staff s(name,password,id,borrowed);
         person.push_back(s);
         borrowed.clear();
@@ -251,14 +246,14 @@ int Staffs::checkLogin(const int i)
     //std::cout<<"用户名："<<name<<std::endl;
     std::cout<<std::endl;
     int index=findStaff(name);
-    std::cout<<"index="<<index<<std::endl;
+    //std::cout<<"index="<<index<<std::endl;
     if(index!=INVALID_INDEX){
         person[index].getAllStaffInfo(name,password,id_input,borrowed);
         //std::cout<<"该用户名对应的文件信息："<<std::endl;
         //std::cout<<person[index].name<<" "<<person[index].password<<" "<<person[index].id<<std::endl;
         std::cout<<"   >>输入密码：";
         password_input=get_(password_input);
-        std::cout<<"输入的密码为："<<password_input<<std::endl;
+        //std::cout<<"输入的密码为："<<password_input<<std::endl;
         std::cout<<std::endl;
         if(password==password_input){
             if(id==id_input){
@@ -357,13 +352,13 @@ void Staffs::showStaffs()
 int Staffs::findStaff(const std::string& name) 
 {
     int n=0;
-    std::cout<<"findStaff: name="<<name<<std::endl;
-    std::cout<<"person容器中的名字:"<<std::endl;
+    //std::cout<<"findStaff: name="<<name<<std::endl;
+    //std::cout<<"person容器中的名字:"<<std::endl;
    // std::cout<<person[0].name<<std::endl;
     //for( auto& i:person)
     for( auto i : person)
     {
-        std::cout<<i.getStaffName()<<std::endl;
+        //std::cout<<i.getStaffName()<<std::endl;
         if(i.getStaffName()==name)
         {
             return n;
