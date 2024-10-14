@@ -11,13 +11,13 @@ std::vector<int(*)()> Interface ={draw_begin,draw_reader,draw_manager,draw_manag
 int introduction()
 {
 	std::cout << "*********************************************************" << std::endl << std::endl;
-	std::cout << "————-————-————-————关于本图书管理系统-————-————-————-————" << std::endl;
-	std::cout << "|                                                    |" << std::endl;
-	std::cout << "|        ————-————->>1.功能说明<<-————-————           |" << std::endl;
-	std::cout << "|        ————-————->>2.书籍说明<<-————-————           |" << std::endl;
-	std::cout << "|        ————-————->>3.返回   <<-————-————           |" << std::endl;
-	std::cout << "|                                                    |" << std::endl;
-	std::cout << "*********************************************************" << std::endl;
+	std::cout << "————-————-————-————关于本图书管理系统-————-————-————-————" << std::endl<< std::endl;
+	std::cout << "|                                                    |" << std::endl<< std::endl;
+	std::cout << "|        ————-————->>1.功能说明<<-————-————           |" << std::endl<< std::endl;
+	std::cout << "|        ————-————->>2.书籍说明<<-————-————           |" << std::endl<< std::endl;
+	std::cout << "|        ————-————->>3.返回   <<-————-————           |" << std::endl<< std::endl;
+	std::cout << "|                                                    |" << std::endl<< std::endl;
+	std::cout << "*********************************************************" << std::endl<< std::endl;
 	std::cout << "————-————->>请选择：";
 
 	int i;
@@ -25,17 +25,17 @@ int introduction()
 	switch (i)
 	{
 	case 1:
-		std::cout << "————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
-		std::cout << "|       通过本系统你可以：                                |" << std::endl;
-		std::cout << "|登录管理员信息，对书本信息、相关人员操作                     |" << std::endl;
-		std::cout << "|登录读者信息，可进行借书还书操作                            |" << std::endl;
-		std::cout << "————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
+		std::cout << "————-————-————-————-————-————-————-————-————-————-————-" << std::endl<< std::endl;
+		std::cout << "|       通过本系统你可以：                                |" << std::endl<< std::endl;
+		std::cout << "|登录管理员信息，对书本信息、相关人员操作                     |" << std::endl<< std::endl;
+		std::cout << "|登录读者信息，可进行借书还书操作                            |" << std::endl<< std::endl;
+		std::cout << "————-————-————-————-————-————-————-————-————-————-————-" << std::endl<< std::endl;
 		break;
 	case 2:
-		std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
-		std::cout << "|图书主要分文学类和技术类两种                                           |" << std::endl;
-		std::cout << "|你最多可在本图书馆借出三本书                                           |" << std::endl;
-		std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
+		std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl<< std::endl;
+		std::cout << "|图书主要分文学类和技术类两种                                           |" << std::endl<< std::endl;
+		std::cout << "|你最多可在本图书馆借出三本书                                           |" << std::endl<< std::endl;
+		std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl<< std::endl;
 		break;
 	case 3: 
 		return 0;
@@ -48,21 +48,21 @@ int introduction()
 
 void find_back()
 {
-	std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
-	std::cout << "|如果读者遗忘密码，请联系管理员                                    |" << std::endl;
-	std::cout << "|可联系以下管理员：                                              |" << std::endl;
-	std::cout << "|姓名：张一  电话号码：10086                                      |" << std::endl;
-	std::cout << "|姓名：钱七  电话号码：10087                                      |" << std::endl;
-	std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
+	std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl<< std::endl;
+	std::cout << "|如果读者遗忘密码，请联系管理员                                    |" << std::endl<< std::endl;
+	std::cout << "|可联系以下管理员：                                              |" << std::endl<< std::endl;
+	std::cout << "|姓名：张一  电话号码：10086                                      |" << std::endl<< std::endl;
+	std::cout << "|姓名：钱七  电话号码：10087                                      |" << std::endl<< std::endl;
+	std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl<< std::endl;
 }
 
 int help()
 {
-	std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
-	std::cout << "|          1.将人员信息保存在磁盘文件                             |" << std::endl;
-	std::cout << "|          2.将书籍信息保存在磁盘文件                             |" << std::endl;
-	std::cout << "|          3.忘记密码                                          |" << std::endl;
-	std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl;
+	std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl<< std::endl;
+	std::cout << "|          1.将人员信息保存在磁盘文件                             |" << std::endl<< std::endl;
+	std::cout << "|          2.将书籍信息保存在磁盘文件                             |" << std::endl<< std::endl;
+	std::cout << "|          3.忘记密码                                          |" << std::endl<< std::endl;
+	std::cout << "————-————-————-————-————-————-————-————-————-————-————-————-————-————-" << std::endl<< std::endl;
     std::cout << "————-————->>请选择";
 	
     int i;
@@ -102,7 +102,7 @@ int draw_begin()
 {
     std::vector<std::string>messages={"1 序言","2 管理员","3 普通读者","4 帮助","5 退出"};
     draw_1(messages);
-    int message=get_(5);
+    int message=get_input_is_valid(5);
     switch(message)
     {
         case 1:
@@ -124,7 +124,7 @@ int draw_manager()
 {
 	std::vector<std::string> messages = { "1 管理书籍", "2 管理人员", "3 返回"};
 	draw_1(messages);
-	int message = get_(3);
+	int message = get_input_is_valid(3);
 	switch (message)
 	{
 	case 1:  return 3;//管理书籍
@@ -160,7 +160,7 @@ int draw_manage_book()
 {
 	std::vector<std::string> messages = { "1 添加书籍", "2 删除书籍", "3 查找书籍", "4 修改书籍", "5 查看所有书籍", "6 返回" };
 	draw_1(messages);
-	int message = get_(6);
+	int message = get_input_is_valid(6);
 	switch (message)
 	{
 	case 1:  return 7;
@@ -236,7 +236,7 @@ int draw_manage_visitor()
 {
 	std::vector<std::string> messages = { "1 添加用户", "2 删除用户", "3 修改用户","4 查看用户", "5 查看所有人员", "6 返回" };
 	draw_1(messages);
-	int message = get_(6);
+	int message = get_input_is_valid(6);
 	switch (message)
 	{
 	case 1:  return 11;
@@ -309,7 +309,7 @@ int draw_reader()
 {
 	std::vector<std::string> messages = { "1 借书", "2 还书", "3 查看书籍", "4 返回" };
 	draw_1(messages);
-	int message = get_(4);
+	int message = get_input_is_valid(4);
 	switch (message)
 	{
 	case 1: return 6;

@@ -1,9 +1,8 @@
-#ifndef STAFFS_H
-#define STAFFS_H
+#ifndef BMS_SRC_STAFFS_H
+#define BMS_SRC_STAFFS_H
 
 #include<iostream>
 #include<string>
-//#include<conio.h>
 #include<vector>
 #include<algorithm>
 #include<cstdlib>

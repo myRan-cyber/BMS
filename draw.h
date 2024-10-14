@@ -1,5 +1,5 @@
-#ifndef DRAW_H
-#define DRAW_H
+#ifndef BMS_SRC_DRAW_H
+#define BMS_SRC_DRAW_H
 
 #include<iostream>
 #include<cstdlib>
@@ -65,7 +65,7 @@ void draw_body_2(std::vector<std::string> messages);
 
 //检测输入函数
 template<typename T>
-T get_(T t)
+T get_input_is_valid(T t)
 {
     T input;
     bool out=false;

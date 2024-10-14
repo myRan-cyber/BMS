@@ -1,8 +1,7 @@
 #include"staffs.h"
-#include<fstream>
 #include"books.h"
+#include<fstream>
 #include <cstring>
-
 
 std::string user;
 Staffs S;
@@ -202,10 +201,10 @@ void Staffs::addStaff()
     }
     else{
         std::cout<<"   >>密码："<<std::endl;
-        password=get_(password);
+        password=get_input_is_valid(password);
         std::cout<<std::endl;
         std::cout<<"   >>身份：";
-        id=get_(id);
+        id=get_input_is_valid(id);
         std::cout<<std::endl;
 
         Staff staff(name,password,id,borrowed);
@@ -252,7 +251,7 @@ int Staffs::checkLogin(const int i)
         //std::cout<<"该用户名对应的文件信息："<<std::endl;
         //std::cout<<person[index].name<<" "<<person[index].password<<" "<<person[index].id<<std::endl;
         std::cout<<"   >>输入密码：";
-        password_input=get_(password_input);
+        password_input=get_input_is_valid(password_input);
         //std::cout<<"输入的密码为："<<password_input<<std::endl;
         std::cout<<std::endl;
         if(password==password_input){
@@ -304,10 +303,10 @@ void Staffs::changeStaff()
         std::cin>>name;
         std::cout<<std::endl;
         std::cout<<"   >>密码：";
-        password=get_(password);
+        password=get_input_is_valid(password);
         std::cout<<std::endl;
         std::cout<<"   >>身份：";
-        id=get_(id);
+        id=get_input_is_valid(id);
         std::cout<<std::endl;
         person[index].setStaffName(name);
         person[index].setStaffId(id);
@@ -318,16 +317,6 @@ void Staffs::changeStaff()
         std::cout<<"--------->>该人不存在<<---------"<<std::endl<<std::endl;
     }
 }
-
-/*void Staff::getStaffInfo(std::vector<std::string>& result)
-{
-    result.push_back(this->name);
-    result.push_back(std::to_string(this->password));
-    result.push_back(this->id);
-    for(const auto& book:getBorrowedBooks()){
-        result.push_back(book);
-    }
-}*/
 
 void Staffs::showStaffs()
 {

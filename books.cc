@@ -1,13 +1,13 @@
 #include"books.h"
 #include"draw.h"
-#include<iostream>
-#include<string>
+//#include<iostream>
+//#include<string>
 #include<cstring>
-#include<vector>
-#include<fstream>
+//#include<vector>
+//#include<fstream>
 #include<sstream>
-#include<iomanip>
-#include<ctime>
+//#include<iomanip>
+//#include<ctime>
 
 Books B;//储存所有书本信息
 
@@ -205,10 +205,10 @@ void Books::addBook()
         std::cin>>author;
         std::cout<<std::endl;
         std::cout<<"   >>id:";
-        id=get_(id);
+        id=get_input_is_valid(id);
         std::cout<<std::endl;
         std::cout<<"   >>状态：";
-        bookStatus=get_(bookStatus);
+        bookStatus=get_input_is_valid(bookStatus);
         std::cout<<std::endl;
         std::cout<<"   >>拥有者：";
         std::cin>>owner;
@@ -261,11 +261,11 @@ void Books::changeBook()
         books[index].setBookAuthor(author);
         std::cout<<std::endl;
         std::cout<<"   >>id:";
-        id=get_(id);
+        id=get_input_is_valid(id);
         books[index].setBookId(id);
         std::cout<<std::endl;
         std::cout<<"   >>状态：";
-        status=get_(status);
+        status=get_input_is_valid(status);
         books[index].setBookStatus(status);
         std::cout<<std::endl;
         std::cout<<"   >>拥有者：";
