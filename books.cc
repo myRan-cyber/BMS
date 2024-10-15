@@ -1,13 +1,7 @@
 #include"books.h"
 #include"draw.h"
-//#include<iostream>
-//#include<string>
 #include<cstring>
-//#include<vector>
-//#include<fstream>
 #include<sstream>
-//#include<iomanip>
-//#include<ctime>
 
 Books B;//储存所有书本信息
 
@@ -126,7 +120,7 @@ void saveBooksToDisk(std::vector<Book>& books)
     std::time_t t=std::time(nullptr);
     std::tm tm=*std::localtime(&t);
     std::stringstream filename;
-    filename << std::put_time(&tm,"%Y%m%d%H%M%S")<<".txt";
+    filename<<"/home/nuaaer/BMS/BookInfo/" << std::put_time(&tm,"%Y%m%d%H%M%S")<<".txt";
     //打开文件并写入信息
     std::ofstream file(filename.str());
     if(file.is_open()){

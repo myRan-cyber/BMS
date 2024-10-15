@@ -110,10 +110,10 @@ void Staff::getStaffInfo(std::vector<std::string>& result)
 //将人员信息写入磁盘
 void saveStaffInfoToDisk(Staff& staff)
 {
-    std::time_t t = std::time(nullptr);
-    std::tm tm=*std::localtime(&t);
-    std::stringstream filename;
-    filename<<std::put_time(&tm,"%Y%m%d%H%M%S")<<".txt";
+    std::time_t t = std::time(nullptr);//获取当前时间的时间戳
+    std::tm tm=*std::localtime(&t);//将时间戳转换为本地时间的结构体
+    std::stringstream filename;//创建一个字符串流对象
+    filename<<"/home/nuaaer/BMS/StaffInfo/"<<std::put_time(&tm,"%Y%m%d%H%M%S")<<".txt";//生成文件名
 
     std::ofstream file(filename.str());
     if(file.is_open())

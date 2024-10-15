@@ -12,11 +12,11 @@ int introduction()
 {
 	std::cout << "*********************************************************" << std::endl << std::endl;
 	std::cout << "————-————-————-————关于本图书管理系统-————-————-————-————" << std::endl<< std::endl;
-	std::cout << "|                                                    |" << std::endl<< std::endl;
-	std::cout << "|        ————-————->>1.功能说明<<-————-————           |" << std::endl<< std::endl;
-	std::cout << "|        ————-————->>2.书籍说明<<-————-————           |" << std::endl<< std::endl;
-	std::cout << "|        ————-————->>3.返回   <<-————-————           |" << std::endl<< std::endl;
-	std::cout << "|                                                    |" << std::endl<< std::endl;
+	std::cout << "|                                                      |" << std::endl<< std::endl;
+	std::cout << "|        ————-————->>1.功能说明<<-————-————             |" << std::endl<< std::endl;
+	std::cout << "|        ————-————->>2.书籍说明<<-————-————             |" << std::endl<< std::endl;
+	std::cout << "|        ————-————->>3.返回   <<-————-————              |" << std::endl<< std::endl;
+	std::cout << "|                                                      |" << std::endl<< std::endl;
 	std::cout << "*********************************************************" << std::endl<< std::endl;
 	std::cout << "————-————->>请选择：";
 
@@ -76,12 +76,12 @@ int help()
 	switch (i) 
     {
 	case 1:
-        std::cout<<"请输入人员姓名：";
-        std::cin>>staffName;
-        std::cout<<"请输入人员密码：";
-        std::cin>>staffPassword;
-        std::cout<<"请输入人员标志：";
-        std::cin>>staffId;
+        //std::cout<<"请输入人员姓名：";
+        //std::cin>>staffName;
+        //std::cout<<"请输入人员密码：";
+        //std::cin>>staffPassword;
+        //std::cout<<"请输入人员标志：";
+       // std::cin>>staffId;
 		saveStaffInfoToDisk(staff);
 		    break;
 	case 2:
@@ -409,19 +409,19 @@ void draw_2(std::vector<std::string> messages)
 }
 void draw_head()
 {
-	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-" << std::endl ;
-	std::cout << "|                   欢迎来到图书管理系统                     |" << std::endl << std::endl;
+	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-————" << std::endl ;
+	std::cout << "|                   欢迎来到图书管理系统                   |" << std::endl << std::endl;
 }
 void draw_body_1(std::vector<std::string> messages)
 {
 	for (const auto& i:messages)
 	{
-		std::cout << "      ————-————->> " <<std::setw(15) <<std::left << i << " <<-————-————                  |" << std::endl << std::endl;
+		std::cout << "|      ————-————->> " <<std::setw(15) <<std::left << i << " <<-————-————           |" << std::endl << std::endl;
 	}
 	int n = 5 - messages.size();
 	for (int i = 0; i < n; i++)
 	{
-		std::cout << "                                                             |" << std::endl << std::endl;
+		std::cout << "                                                               |" << std::endl << std::endl;
 	}
 }
 void draw_body_2(std::vector<std::string> messages)
@@ -436,17 +436,21 @@ void draw_body_2(std::vector<std::string> messages)
 		std::cout << "                                                                |" << std::endl << std::endl;
 	}
 }
+//菜单下输入选项
 void draw_tail_1()
 {
-	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————" << std::endl << std::endl;
+	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-————" << std::endl << std::endl;
 	std::cout << "<<-————请选择————->> : ";
 }
+
+//输入内容
 void draw_tail_2()
 {
-	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————" << std::endl << std::endl;
+	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-————" << std::endl << std::endl;
 	std::cout << "<<-————请输入————->> : ";
 }
+//退出
 void draw_tail_3()
 {
-	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————-————" << std::endl << std::endl;
+	std::cout << "-————-————-————-————-————-————-————-————-————-————-————-————" << std::endl << std::endl;
 }
