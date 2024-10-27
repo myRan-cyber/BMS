@@ -1,14 +1,14 @@
 #ifndef BMS_SRC_BOOKS_H
 #define BMS_SRC_BOOKS_H
 
+#include"draw.h"
+#include"staffs.h"
+
 #include<iostream>
 #include<string>
 #include<ctime>
 #include<fstream>
 #include<vector>
-
-#include"draw.h"
-#include"staffs.h"
 
 
 //定义书籍状态常量
@@ -82,15 +82,9 @@ struct Books{
     void changeBook();
     //展示书籍操作
     void showBooks();
-    //借阅多本书籍操作
-    void borrowMultipleBooks(std::string borrowerName,int numBooks);
-    //归还多本书籍操作
-    void returnMultipleBooks(std::string returnerName,int numBooks);
     //查找书籍操作
     int findBook(std::string bookName);
-    //返回书籍容器
-    //std::vector<Book> getBooks() const;
-
+    
 
     //几个友元函数
     friend int draw_borrow();
@@ -98,7 +92,6 @@ struct Books{
     friend int draw_show_all_books();
     friend void saveBooksToDisk(std::vector<Book>& books);
 
-private:
     //书籍容器，包含所有的Book类书籍
     std::vector<Book>books = { };
 };

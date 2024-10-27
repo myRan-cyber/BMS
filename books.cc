@@ -43,31 +43,37 @@ void Book::getBookInfo(std::vector<std::string>& result)
 }
 
 //获取书本信息
+//状态
 int Book::getBookStatus() const
 {
     return this->status;
 }
 
+//书名
 std::string Book::getBookName() const
 {
     return this->name;
 }
 
+//作者
 std::string Book::getBookAuthor() const
 {
     return this->author;
 }
 
+//书籍号
 long Book::getBookId() const
 {
     return this->id;
 }
 
+//书籍所有者
 std::string Book::getBookOwner() const
 {
     return this->owner;
 }
 
+//所有信息
 void Book::getAllBookInfo(std::string& name,std::string& author, long& id,std::string& status,std::string& owner)
 {
     name=this->name;
@@ -311,16 +317,4 @@ void Books::showBooks()
     else{
         std::cout<<"--------->>该书不存在<<---------"<<std::endl;
     }
-}
-
-//借阅多本书籍
-void Books::borrowMultipleBooks(std::string name,int n)
-{
-    books[n].borrowBook(name);
-}
-
-//归还多本书籍
-void Books::returnMultipleBooks(std::string name,int n)
-{
-    books[n].returnBook(name);
 }
